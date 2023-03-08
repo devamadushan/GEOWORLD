@@ -158,4 +158,19 @@ function getutilisateur($id)
         die ("erreur dans la requete ".$e->getMessage());
     }
 }
+
+function updategeoworld($id){
+    global $pdo;
+    $requete = "SELECT * FROM country where id = :id";
+    try{
+    $prep = $pdo->prepare($requete);
+    $prep->bindParam(':id', $id, PDO::PARAM_INT);
+    $prep->execute();
+    $result = $prep->fetch();
+    return $result;
+    }
+    catch ( Exception $e ) {
+    die ("erreur dans la requete ".$e->getMessage());
+    }
+   }
 ?>

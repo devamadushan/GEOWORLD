@@ -16,7 +16,9 @@
 
 <?php  require_once 'header.php'; 
 //session_start ();
+$defUtilisateur = 'inconnu';
 if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
+  $defUtilisateur = $_SESSION['role'];
     echo "<p style=text-align:right;>Bienvenue : ".$_SESSION['login']."(".$_SESSION['role'].")";
     //echo '<br><a href="logoutGeoworld.php">Deconnexion</a></p>';
 }?>
@@ -52,7 +54,10 @@ $desPays = getCountriesByContinent($continent);
            <th>Pays</th>
            <th>Population</th>
            <th>Capital</th>
-         </tr>
+            <?php if ($defUtilisateur =='enseignant' ||$defUtilisateur =='admin'):?> 
+            <th>Modifier</th> 
+            <?php endif; ?>
+           </tr>
           </div>
     <p>
         <code>
@@ -73,6 +78,10 @@ $desPays = getCountriesByContinent($continent);
                     ?> 
                 
        <td> <?php echo $cap->Name ?> </td>
+
+       <?php if($defUtilisateur =='enseignant' || $defUtilisateur =='admin'): ?>
+       <td><a href="updatepays.php?id=<?php echo $pays->id ?>" 
+        onClick="return(confirm('Etes-vous sûr de vouloir modifier <?php echo $pays->Name ?> ?'));">update</a></td> <?php endif; ?>
                 <?php endforeach; ?>
 
                
