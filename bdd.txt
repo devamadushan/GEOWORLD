@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE `utilisateur` (
+  `id` int(11) NOT NULL auto_increment,
+  `nom` varchar(100) NOT NULL default '',
+  `prenom` varchar(50) NOT NULL default '',
+  `date_naissance` date NOT NULL ,
+  `login` varchar(50) NOT NULL ,
+  `password` varchar(50) NOT NULL ,
+  `role` varchar(50) NOT NULL ,
+
+  PRIMARY KEY  (`id`)
+) ;
+INSERT INTO `utilisateur` VALUES (1,'Tandabany','Adrien','1999-05-15','Adrien','123456','admin'),
+INSERT INTO `utilisateur` VALUES (2,'Toto','Deva','1999-12-22','Deva','1234','enseignant'),
+INSERT INTO `utilisateur` VALUES (3,'Song','Steeven','1999-09-09','Steeven','12345','eleve');

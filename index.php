@@ -13,70 +13,17 @@
  */
 
 ?>
-<?php  require_once 'header.php'; ?>
-<?php
-require_once 'inc/manager-db.php';
-if (!empty($_GET['continent'])) { 
-    $continent =$_GET['continent'];
-} else {
-    $continent ="Africa";
-}
-
-$desPays = getCountriesByContinent($continent);
-//print_r($desPays);
-
-
+<?php  require_once 'header.php'; 
+//session_start ();
+if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
+  echo "<p style=text-align:right;>Bienvenue : ".$_SESSION['login']."(".$_SESSION['role'].")";
+  echo '<br><a href="logoutGeoworld.php">Deconnexion</a></p>';
+  }
 ?>
-
-<main role="main" class="flex-shrink-0">
-
-  <div class="container">
-
-    <h1 onclick="info(this)">Countries of <?php 
-    if (!empty($_GET['continent'])) {
-        echo $_GET['continent']; 
-    } else {
-        echo "Africa";
-    }
-    
-    ?></h1>
-    <div>
-     <table class="table">
-         <tr>
-           <th>Pays</th>
-           <th>Capital</th>
-         </tr>
-          </div>
-    <p>
-        <code>
-      
-      <?php foreach ($desPays as $pays ):?>  
-      <tr>
-              <td> <a href="?continent=<?php echo $pays->Continent ; ?>">
-              <?php echo $pays->Name ?> </a> 
-              </td>
-               <?php 
-                $name = $pays->Capital ;
-                $capital= getCapital($name);
-                foreach ($capital as $cap):
-                      //print_r($capital);
-                    ?> 
-                
-       <td> <?php echo $cap->Name ?> </td>
-                <?php endforeach; ?>
-
-               
-      <?php endforeach; ?>
-
-      </tr>
-        </code>
-      </table>
-    </p>
-    
-  </div>
-</main>
 
 <?php
 require_once 'javascripts.php';
 require_once 'footer.php';
 ?>
+<script src="..\Projet Geoworld\assets\bootstrap-5.1.3-dist\js\cookiechoices.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'mentions.php');});</script>

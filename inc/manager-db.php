@@ -102,4 +102,60 @@ function getCapital($name)
     return $prep->fetchALL();
    
 }
-
+/** 
+ * Retourne le login et le password
+ *
+ * @param string $login 
+ * 
+ * @param string $pwd
+ * 
+ * @return array tableau d'utilisateur
+ */
+function getAuthentification($login,$pwd){
+    global $pdo;
+    $query = 'SELECT * FROM utilisateur WHERE login= :login and password= :pwd';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':login', $login);
+    $prep->bindValue(':pwd', $pwd);
+    $prep->execute();
+    // on vérifie que la requête ne retourne qu'une seule ligne
+    if($prep->rowCount() == 1) {
+        $result = $prep->fetch();
+        return $result;
+    }
+    else
+    return false;
+  
+}
+/** 
+ * Retourne le login et le password
+ *
+ * @return array tableau d'utilisateur
+ */
+function listutilisateur()
+{
+    global $pdo;
+    $query = 'SELECT * FROM utilisateur';
+    try{
+        $result = $pdo->query($query)->fetchall(PDO::FETCH_OBJ);
+        return $result;
+    } catch( Exception $e) {
+         die("erreur dans la requete ".$e->getMessage());
+    }
+}
+function getutilisateur($id)
+{
+    global $pdo;
+    $requete = "SELECT * FROM utilisateur where id = :id";
+    try{
+        $prep = $pdo->prepare($requete);
+        $prep->bindParam(':id', $id, PDO::PARAM_INT);
+        $prep->execute();
+        $result = $prep->fetch();
+        return $result;
+    }
+    catch ( Exception $e ) {
+        die ("erreur dans la requete ".$e->getMessage());
+    }
+}
+?>

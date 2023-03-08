@@ -25,7 +25,12 @@
   <?php
       require_once 'inc/manager-db.php';
       $continents = getNomContinents();
-      //print_r($continents) ;
+      session_start();
+      $test = "pooda";
+    if(isset($_SESSION['role']))
+    {
+        $test= $_SESSION['role'];
+    }
     ?>
   <style>
     .bd-placeholder-img {
@@ -48,7 +53,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Geoworld</a>
+    <a class="navbar-brand">Geoworld</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
      data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -57,13 +62,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" 
@@ -72,16 +71,50 @@
              
           <div class="dropdown-menu" aria-labelledby="dropdown01">
           <?php foreach ($continents as $con) :?> 
-            <a class="dropdown-item" href="?continent=<?php echo $con->Continent ?>">
+            <a class="dropdown-item" href="continent.php?continent=<?php echo $con->Continent ?>">
                 <?php echo $con->Continent ?></a>
           <?php endforeach; ?>
           </div>
         </li>
         <li class="nav-item">
+          <a class="nav-link " href="requetesql.php">Requete SQL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="geomap.php">Geomap</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link " href="todo-projet.php">
-            Présentation-Atelier-de-Prof-SLAM
+            Présentation
           </a>
         </li>
+        <?php if($test=='admin') :?>
+        <li class="nav-item">
+          <a class="nav-link " href="utilisateurs.php">Utilisateurs</a>
+        </li>
+        <?php endif ?> 
+        <?php if(isset($_SESSION['role'])!='admin'||isset ($_SESSION['role'])!='enseignant'||isset ($_SESSION['role'])!='eleve') :?>
+        <li class="nav-item">
+          <a class="nav-link " href="Authentif.php">
+            Connexion
+          </a>
+          </li>
+        <?php endif ?> 
+        
+        
+        <?php if(isset($_SESSION['role'])) :?>
+        <li class="nav-item">
+          <a class="nav-link " href="LogoutGeoworld.php">Deconnexion</a>
+        </li>
+        <?php endif ?>  
+
+        <?php if(isset($_SESSION['role'])!='admin'||isset ($_SESSION['role'])!='enseignant'||isset ($_SESSION['role'])!='eleve') :?>
+        <li class="nav-item">
+          <a class="nav-link " href="inscrip.php">
+            Inscription
+          </a>
+        </li>
+        <?php endif ?> 
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" 
