@@ -173,4 +173,24 @@ function updategeoworld($id){
     die ("erreur dans la requete ".$e->getMessage());
     }
    }
+
+
+/**
+ * TEST FONCTION
+ */
+
+ /*function getbarrederecherche($q){
+    global $pdo;
+    $requete = "SELECT * FROM country WHERE Name = :id";
+    try{
+    $prep = $pdo->prepare($requete);
+    $prep->bindParam(':id', $q, PDO::PARAM_STR);
+    $prep->execute();
+    $result = $prep->fetchall();
+    return $result;
+    }
+    catch ( Exception $e ) {
+    die ("erreur dans la requete ".$e->getMessage());
+    }
+   }*/
 ?>

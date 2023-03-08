@@ -25,5 +25,5 @@ if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
 require_once 'javascripts.php';
 require_once 'footer.php';
 ?>
-<script src="..\Projet Geoworld\assets\bootstrap-5.1.3-dist\js\cookiechoices.js"></script>
+<script src="..\Geoworld\assets\bootstrap-5.1.3-dist\js\cookiechoices.js"></script>
 <script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'mentions.php');});</script>

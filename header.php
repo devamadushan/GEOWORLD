@@ -83,6 +83,9 @@
           <a class="nav-link " href="geomap.php">Geomap</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link " href="barrederecherche.php">Recherche par pays</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link " href="todo-projet.php">
             Présentation
           </a>
@@ -116,11 +119,7 @@
         <?php endif ?> 
 
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" 
-        placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+    
     </div>
   </div>
 </nav>
