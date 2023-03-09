@@ -31,7 +31,6 @@ if (!empty($_GET['continent'])) {
 }
 
 $desPays = getCountriesByContinent($continent);
-//print_r($desPays);
 
 
 ?>
@@ -54,6 +53,7 @@ $desPays = getCountriesByContinent($continent);
            <th>Pays</th>
            <th>Population</th>
            <th>Capital</th>
+           <th>Langues parlées</th>
             <?php if ($defUtilisateur =='enseignant' ||$defUtilisateur =='admin'):?> 
             <th>Modifier</th> 
             <?php endif; ?>
@@ -66,10 +66,11 @@ $desPays = getCountriesByContinent($continent);
       <tr>
               <td>
               <?php echo $pays->Name ?>
+        
               </td>
               <td>
                 <?php echo $pays->Population ?>
-              </td>
+      </td>
                <?php 
                 $name = $pays->Capital ;
                 $capital= getCapital($name);
@@ -77,17 +78,33 @@ $desPays = getCountriesByContinent($continent);
                       //print_r($capital);
                     ?> 
                 
+                
        <td> <?php echo $cap->Name ?> </td>
-
+              
        <?php if($defUtilisateur =='enseignant' || $defUtilisateur =='admin'): ?>
        <td><a href="updatepays.php?id=<?php echo $pays->id ?>" 
         onClick="return(confirm('Etes-vous sûr de vouloir modifier <?php echo $pays->Name ?> ?'));">update</a></td> <?php endif; ?>
                 <?php endforeach; ?>
+       
+      <?php 
+      $resultatPays = $pays->Name;
+      $langues = getLangueById($resultatPays);
+      //print_r($langues); 
+      ?>
 
-               
+
+
+      <td >
+      <?php foreach ($langues as $langueDonnee):?>
+      <a> <?php echo $langueDonnee->Name ; ?> </a>
+      <?php endforeach; ?>
+      </td>
+      </tr>
+      
       <?php endforeach; ?>
 
-      </tr>
+
+      
         </code>
       </table>
     </p>
