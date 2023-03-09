@@ -45,53 +45,36 @@ global $pdo;
         $recherche = $pdo->query('SELECT * FROM country WHERE Name LIKE "'.$q.'%" ORDER BY id DESC');
       }
 ?>
-
-      <form method="GET">    
+<form method="GET">    
         <input type="search" name="q" placeholder="Recherche par capital" />
         <input type="submit" value="valider" />
 	  </form>
+      
 
 	<table class="table">
          <tr>
            <th>Name</th>
-           <th>Code</th>
            <th>Continent</th>
            <th>Region</th>
-           <th>Name</th>
-           <th>Surface Area</th>
-           <th>Independance Year</th>
            <th>Population</th>
            <th>Life Expectancy</th>
-           <th>GPN</th>
-           <th>GPN Old</th>
            <th>Local Name</th>
            <th>Government Form</th>
            <th>Head Of State</th>
-           <th>Capital</th>
-           <th>Code2</th>
            </tr>
-
       <?php foreach($recherche as $b): ?>
-        <table class="table">
             <tr>
-        	<th><?php echo $b->Name ?></th>
-            <th><?php echo $b->Code ?></th>
-            <th><?php echo $b->Continent ?></th>
-            <th><?php echo $b->Region?></th>
-            <th><?php echo $b->SurfaceArea ?></th>
-            <th><?php echo $b->IndepYear?></th>
-            <th><?php echo $b->Population ?></th>
-            <th><?php echo $b->LifeExpectancy ?></th>
-            <th><?php echo $b->GNP ?></th>
-            <th><?php echo $b->GNPOld?></th>
-            <th><?php echo $b->LocalName ?></th>
-            <th><?php echo $b->GovernmentForm ?></th>
-            <th><?php echo $b->HeadOfState ?></th>
-            <th><?php echo $b->Capital ?></th>
-            <th><?php echo $b->Code2 ?></th>
+        	<td><?php echo $b->Name ?></td>
+            <td><?php echo $b->Continent ?></td>
+            <td><?php echo $b->Region?></td>
+            <td><?php echo $b->Population ?></td>
+            <td><?php echo $b->LifeExpectancy ?></td>
+            <td><?php echo $b->LocalName ?></td>
+            <td><?php echo $b->GovernmentForm ?></td>
+            <td><?php echo $b->HeadOfState ?></td>
       </tr>
-      </table>
         <?php endforeach ?>
+        </table>
       
 
 

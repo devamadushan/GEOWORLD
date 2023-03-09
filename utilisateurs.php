@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="style.csS" />
+  <link rel="stylesheet" href="style.css" />
 <?php
 /**
  * Home Page
