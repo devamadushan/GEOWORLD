@@ -56,10 +56,10 @@ $desPays = getCountriesByContinent($continent);
            <th>Pays</th>
            <th>Population</th>
            <th>Capital</th>
-           <th>Langues parlées</th>
             <?php if ($defUtilisateur =='enseignant' ||$defUtilisateur =='admin'):?> 
             <th>Modifier</th> 
             <?php endif; ?>
+            <th>Langues parlées</th>
            </tr>
           </div>
     <p>
