@@ -35,21 +35,25 @@ require_once 'inc/connect-db.php';
 require_once 'inc/manager-db.php';
 require_once 'header.php'; 
 ?>
-<form action="GeoworldTraitement.php" method="post">
+<form action="GeoworldTraitement.php" class="traite" method="post">
 <h1>Inscription</h1>
 
-<p>Utilisateur <input type="text" name="login"></p>
+<label for="utilisateur">Utilisateur : </label>
+<input type="text" id="utilisateur" name="login" required>
 
-<p>Mot de passe <input type="password" name="pwd"></p>
+<label for="pwd">Mot de passe : </label> 
+<input type="password" id="password" name="pwd" required>
 
-<p>Nom <input type="text"  name="nom" required></p>
+<label for="Nom">Nom : </label>
+<input type="text" id="nom" name="nom" required>
 
-<p>Prenom <input type="text" name="prenom" required></p>
+<label for="prenom">Prenom : </label>
+<input type="text" id="prenom" name="prenom" required></p>
 
-<p>Date de naissance
+<label for="calendrier">Date de naissance : </label>
       <input type="date" name="calendrier" required></p>
 
-<input type="submit" value="S'inscrire">
+<input type="submit" id="sub" value="S'inscrire">
    
 </form>
 </body>
