@@ -2,10 +2,13 @@
 table {
     border: medium solid #6495ed;
     border-collapse: collapse;
-    
+     margin-top: auto;
+        margin-right: auto;
     width: 10%;
     text-align: center;
     }
+
+
 
 /* table de utilisateurs.php*/ 
     th {
@@ -44,29 +47,35 @@ table {
     .ta{
         border: medium solid #6495ed;
     border-collapse: collapse;
-        position:absolute; left:50px; top:300px;
+    margin-top: 3CH;
+    margin-left: auto; 
+    margin-right: auto;
         text-align: center;
         width: 90%;
        
     /* submit et input de la barrederecherche.php */   
     }
     .BDR {
-        position:absolute; left:400px; top:160px;
-    
+        margin-top: auto;
+        margin-left: auto;   
+        text-align: center;
     }
     
     /* input de barrederecherche.php*/ 
     .RECHERCHE {
-        width: 160%;
+        width: 50%;
         height: 60px;
         -webkit-transition: width 0.15s ease-in-out;
         transition: width 0.15s ease-in-out;
+        margin-top: 1ch;
+        margin-left: auto;
     }
 
     /* submit de barrederecherche.php*/ 
     .VALIDER {
-        position:absolute; left:300px; top:0px;
-        width: 100%;
+        margin-top: auto;
+        margin-left: auto;
+        width: 12%;
         height: 60px;
         -webkit-transition: width 0.15s ease-in-out;
         transition: width 0.15s ease-in-out;
