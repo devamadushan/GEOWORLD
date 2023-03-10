@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" />
     <title>Formulaire Geoworld</title>
 </head>
 <body>
@@ -32,6 +33,7 @@
  */
 require_once 'inc/connect-db.php';
 require_once 'inc/manager-db.php';
+require_once 'header.php'; 
 ?>
 <form action="GeoworldTraitement.php" method="post">
 <h1>Inscription</h1>
@@ -51,4 +53,8 @@ require_once 'inc/manager-db.php';
    
 </form>
 </body>
+<?php
+require_once 'javascripts.php';
+require_once 'footer.php';
+?>
 </html>

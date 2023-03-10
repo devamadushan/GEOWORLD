@@ -1,4 +1,11 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylehome.css" />
+    <title>Document</title><?php
 /**
  * Home Page
  *
@@ -17,9 +24,19 @@
 //session_start ();
 if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
   echo "<p style=text-align:right;>Bienvenue : ".$_SESSION['login']."(".$_SESSION['role'].")";
-  echo '<br><a href="logoutGeoworld.php">Deconnexion</a></p>';
   }
 ?>
+<div class="wrapper">
+  <div class="content">
+    <h1>Bienvenue sur notre site</h1>
+    <p></p>
+    <img class="image" src="images/LOGO.JPG" alt="Votre image" />
+    <p>Je suis à votre disposition pour répondre à tous vos besoins en matière de développement web.</p>
+  </div>
+</div>
+
+
+
 
 <?php
 require_once 'javascripts.php';

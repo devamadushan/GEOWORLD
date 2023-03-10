@@ -1,0 +1,26 @@
+.wrapper {
+  height: 50vh; /* Hauteur de la fenêtre d'affichage */
+  overflow: hidden; /* Empêche l'affichage des éléments qui dépassent de la hauteur de la fenêtre */
+  position: relative;
+ 
+}
+
+.content {
+  position: absolute;
+  top: 0%; /* Place le contenu au centre de la fenêtre */
+  transform: translateY(-50%); /* Déplace le contenu vers le haut de 50% de sa hauteur */
+  animation-name: scrollDown;
+  animation-duration: 3s;
+}
+.image{
+  width: 700%;
+}
+/* Définit l'animation pour déplacer le contenu vers le bas */
+@keyframes scrollDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

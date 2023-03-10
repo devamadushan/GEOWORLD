@@ -1,3 +1,5 @@
+
+
 <?php
 /**
  * Home Page
@@ -35,6 +37,7 @@ $desPays = getCountriesByContinent($continent);
 
 
 ?>
+<body>
 
 <main role="main" class="flex-shrink-0">
 
@@ -94,7 +97,7 @@ $desPays = getCountriesByContinent($continent);
     
   </div>
 </main>
-
+       </body>
 <?php
 require_once 'javascripts.php';
 require_once 'footer.php';

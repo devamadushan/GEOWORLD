@@ -18,7 +18,7 @@
  */
 
 ?>
-
+<div class="back"> 
 <?php  
 
 
@@ -30,7 +30,7 @@ $utilisateurs= listutilisateur();
 //print_r($utilisateurs);
 ?>
 
-<h3 style="position:absolute; left:80px; top:80px">Les Utilisateurs :</h3>
+<h3 class="utilisateur" >Les Utilisateurs :</h3>
 <table border=2 style="position:absolute; left:80px; top:114px">
   <tr><th>id</th><th>nom</th><th>prenom</th><th>date-naissance</th>
   <th>Role</th><th>Supprimer</th><th>Editer</th></tr>
@@ -48,7 +48,7 @@ $utilisateurs= listutilisateur();
   <?php endif; ?>
   <?php endforeach; ?>
   </table>
-  <h3 style="position:absolute; left:700px; top:80px">Les Utilisateurs en attente :</h3>
+  <h3  class="utilisateur2" >Les Utilisateurs en attente :</h3>
   <table border=2 style="position:absolute; left:700px; top:115px">
   <tr><th>id</th><th>nom</th><th>prenom</th><th>date-naissance</th>
   <th>Role</th><th>Supprimer</th><th>Editer</th></tr>
@@ -68,7 +68,7 @@ $utilisateurs= listutilisateur();
   <?php endforeach; ?>
   </table>
 
-
+    </div>
 <?php
 require_once 'javascripts.php';
     endif;

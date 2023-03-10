@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.csS" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
 </head>
-<body>
+
 <?php  
 /**
  * Ce script est composé de fonctions d'exploitation des données
@@ -35,7 +35,7 @@ require_once 'inc/connect-db.php';
 require_once 'inc/manager-db.php';
 ?>
 
-
+<body>
 <?php
       
 global $pdo;
@@ -45,15 +45,14 @@ global $pdo;
         $recherche = $pdo->query('SELECT * FROM country WHERE Name LIKE "'.$q.'%" ORDER BY id DESC');
       }
 ?>
-<form method="GET">    
-        <input type="search" name="q" placeholder="Recherche par capital" />
-        <input type="submit" value="valider" />
+<form class="BDR" method="GET">    
+        <input class="RECHERCHE" type="search" name="q" placeholder="Recherche par pays..." />
+        <input class="VALIDER" type="submit" value="valider" />
 	  </form>
       
-
-	<table class="table">
+<table class="ta">
          <tr>
-           <th>Name</th>
+           <th>Pays</th>
            <th>Continent</th>
            <th>Region</th>
            <th>Population</th>
@@ -78,9 +77,10 @@ global $pdo;
       
 
 
-      <?php  
-      require_once 'javascripts.php';
-      require_once 'footer.php';
-      ?>
+     
 </body>
+<?php  
+      require_once 'javascripts.php';
+      //require_once 'footer.php';
+      ?>
 </html>
