@@ -100,8 +100,17 @@ function getCapital($name)
     $prep->bindValue(':capital', $name, PDO::PARAM_INT);
     $prep->execute();
     return $prep->fetchALL();
-   
 }
+
+function getLangueById($resultatPays){
+    global $pdo;
+    $query = 'SELECT language.Name FROM  language, countrylanguage, country WHERE country.id=countrylanguage.idCountry AND countrylanguage.idLanguage=language.id AND country.Name=:pays;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':pays', $resultatPays, PDO::PARAM_STR);
+    $prep->execute();
+    return $prep->fetchALL();
+}
+
 /** 
  * Retourne le login et le password
  *
