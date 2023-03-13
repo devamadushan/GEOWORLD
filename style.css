@@ -102,7 +102,7 @@ table {
 
      /* background color*/ 
 :root{
-    --color-bg: linear-gradient(to right,#8b9da9d0,#00050196);
+    --color-bg: linear-gradient(to right,#91c6bddc,#00050196);
     --color-glass:linear-gradient(to left,#142544,#1a9092);
     --color-water:linear-gradient(to left,#142544,#1b6d6e);
     --color-merde:linear-gradient(to right,#D0E3FA,#0059ff);

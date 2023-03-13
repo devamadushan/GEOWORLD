@@ -36,7 +36,7 @@ $desPays = getCountriesByContinent($continent);
 //print_r($desPays);
 
 ?>
-<body>
+<body style="background-color: #91c6bddc">
 
 <main role="main" class="flex-shrink-0">
 
@@ -119,3 +119,4 @@ $desPays = getCountriesByContinent($continent);
 require_once 'javascripts.php';
 require_once 'footer.php';
 ?>
+</body>

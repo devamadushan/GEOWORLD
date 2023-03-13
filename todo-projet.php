@@ -13,6 +13,7 @@
  */
 
 ?>
+<body style="background-color: #91c6bddc">
 <?php require_once 'header.php'; ?>
 
 <div class="container">
@@ -110,3 +111,4 @@
 require_once 'javascripts.php';
 require_once 'footer.php';
 ?>
+</body

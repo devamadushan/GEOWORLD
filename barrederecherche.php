@@ -77,11 +77,10 @@ global $pdo;
         </table>
       
 
-
-     
-</body>
 <?php  
       require_once 'javascripts.php';
       require_once 'footer.php';
       ?>
 </html>
+     
+</body>
