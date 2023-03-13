@@ -65,10 +65,12 @@ table {
     .RECHERCHE {
         width: 50%;
         height: 60px;
-        -webkit-transition: width 0.15s ease-in-out;
-        transition: width 0.15s ease-in-out;
         margin-top: 1ch;
         margin-left: auto;
+        color:white;
+        background-color: #5e656e;
+        
+        -webkit-border-radius:30px;
     }
 
     /* submit de barrederecherche.php*/ 
@@ -77,11 +79,10 @@ table {
         margin-left: auto;
         width: 12%;
         height: 60px;
-        -webkit-transition: width 0.15s ease-in-out;
-        transition: width 0.15s ease-in-out;
         background-color: #D0E3FA;
         border: medium solid #6495ed;
         font-family: monospace;
+        -webkit-border-radius:30px;
     }
 
     /* titre de utilisateurs.php "h3"*/ 
@@ -192,8 +193,88 @@ label {
     font-size: 18px;
     margin-top: 10px;
 }
+.RE{
+    text-align: center;
+}
 
+.REQUETE{
+    width: 80%;
+    height: 120px;
+    margin-top: 1ch;
+    margin-left: auto;
+    
+    
+    }
 
+.EX{
+    width: 12%;
+    height: 40px;
+    margin-top: 7px;
+    background-color: #D0E3FA;
+    border: medium solid #6495ed;
+    font-family: monospace;
+    -webkit-border-radius:30px;
+}
+.option{
+   width: 5cm;
+   height: 1cm;
+   background-color: #5e656e;
+   margin-top: auto;
+   margin-left: auto;
+      margin-right: auto;
+         
+   -webkit-border-radius:10px;
+}
+.option24{
+    width: 5cm;
+    height: 1cm;
+    background-color:#88b5ef;
+    text-align: center;
+    margin-top: auto;
+    margin-left: auto;
+       margin-right: auto;
+          
+    -webkit-border-radius:10px;
+}
+.options{
+    margin-left: auto;
+   margin-right: auto;
+   
+   width: 21cm;
+}
+/* Style du bouton */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  /* Style de la boîte de contenu */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Style des liens à l'intérieur de la boîte de contenu */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Style des liens au survol */
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Affichage de la boîte de contenu lors du survol */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 #sub {
   background-color: #008CBA;
   color: white;
@@ -223,3 +304,5 @@ input[type="submit"]:hover {
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
+
+  

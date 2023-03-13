@@ -76,9 +76,11 @@
           <?php endforeach; ?>
           </div>
         </li>
+        <?php if(isset($_SESSION['role']) ) :?>
         <li class="nav-item">
           <a class="nav-link " href="requetesql.php">Requete SQL</a>
         </li>
+        <?php endif ?> 
         <li class="nav-item">
           <a class="nav-link " href="geomap.php">Geomap</a>
         </li>

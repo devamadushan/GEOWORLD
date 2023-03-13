@@ -13,7 +13,7 @@
   animation-duration: 3s;
 }
 .image{
-  width: 700%;
+  width: 100CM;
 }
 /* Définit l'animation pour déplacer le contenu vers le bas */
 @keyframes scrollDown {
@@ -24,3 +24,45 @@
     transform: translateY(0);
   }
 }
+
+.earth {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  animation: rotate 10s linear infinite;
+}
+
+.earth-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('earth.png');
+  background-size: contain;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+

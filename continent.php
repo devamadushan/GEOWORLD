@@ -33,7 +33,7 @@ if (!empty($_GET['continent'])) {
 }
 
 $desPays = getCountriesByContinent($continent);
-
+//print_r($desPays);
 
 ?>
 <body>

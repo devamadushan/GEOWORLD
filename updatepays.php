@@ -11,7 +11,7 @@ require_once("inc/manager-db.php");
     
     //$name = $updatePays -> Capital;
     //$capital = getCapital($name);
-    print_r($updatePays);
+    //print_r($updatePays);
   
     
 ?>

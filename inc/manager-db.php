@@ -188,18 +188,32 @@ function updategeoworld($id){
  * TEST FONCTION
  */
 
- /*function getbarrederecherche($q){
+ function saverequete($requete){
     global $pdo;
-    $requete = "SELECT * FROM country WHERE Name = :id";
+    $sql = " INSERT into requetes (Requete)
+    values (:requete)";
+try {
+    //on prépare la requête avec les données reçues
+    $statement = $pdo->prepare($sql);
+    $statement->bindParam(':requete', $requete, PDO::PARAM_STR);
+    $statement->execute();
+    //On renvoie vers la page Geoworld
+}
+
+catch(PDOException $e){
+    echo 'Erreur : '.$e->getMessage();
+}
+   
+ }
+
+ function getsql(){
+    global $pdo;
+    $query = 'SELECT DISTINCT Requete FROM requetes';
     try{
-    $prep = $pdo->prepare($requete);
-    $prep->bindParam(':id', $q, PDO::PARAM_STR);
-    $prep->execute();
-    $result = $prep->fetchall();
-    return $result;
+        $result = $pdo->query($query)->fetchall(PDO::FETCH_OBJ);
+        return $result;
+    } catch( Exception $e) {
+         die("erreur dans la requete ".$e->getMessage());
     }
-    catch ( Exception $e ) {
-    die ("erreur dans la requete ".$e->getMessage());
-    }
-   }*/
+ }
 ?>
