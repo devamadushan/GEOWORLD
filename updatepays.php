@@ -23,7 +23,7 @@ require_once("inc/manager-db.php");
   
     
 ?>
-<form action="updatepaysmaj.php" method="get" >
+<form action="updatepaysmaj.php" id="upaa" method="get" >
 <fieldset>
 
 <legend> <i>Mise à jour des données</i></legend>

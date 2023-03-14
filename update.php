@@ -11,7 +11,7 @@ require_once 'header.php';
 require_once 'inc/manager-db.php';
 $id = $_GET['id'];
 $utilisateur = getutilisateur($id);
-print_r($utilisateur);
+/*print_r($utilisateur);*/
 ?>
 <form action="updateutilisateurs.php" method="get" >
 <fieldset>
