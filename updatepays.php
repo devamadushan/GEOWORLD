@@ -1,3 +1,11 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css" />
+	<title>Update pays</title>
+</head>
+
 <?php
 require_once 'header.php'; 
 require_once 'javascripts.php';
@@ -58,3 +66,4 @@ Code2 :
 <input type="submit" value="mettre à jour" />
 <input type="reset" value="Effacer" />
 </form>
+</html>
