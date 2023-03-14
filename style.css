@@ -8,6 +8,14 @@ table {
     text-align: center;
     }
 
+    
+    .content{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        background-color: #D0E3FA;
+    }
+
 
 
 /* table de utilisateurs.php*/ 
@@ -111,6 +119,7 @@ table {
  /* pour la page de authentif,utilisateurs,barrederecherche */ 
 body{
     background-image:var(--color-bg);
+    
     }
 /* authentif.php pour login et mdp*/ 
     .carre{
@@ -163,8 +172,7 @@ body{
     
 }
     
-
-    /* authentif.php logo*/ 
+ /* authentif.php logo*/ 
     .img-fluid {
         width:170px;
     margin-top: 1cm;
@@ -206,6 +214,23 @@ label {
     
     }
 
+    .content{
+        margin-left: auto;
+        margin-right: auto;
+     text-align: center;
+       
+        height: 13cm;
+        width: 30cm;
+    }
+    
+    .image{
+        width: 10cm;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+
 .EX{
     width: 12%;
     height: 40px;
@@ -232,7 +257,7 @@ label {
     text-align: center;
     margin-top: auto;
     margin-left: auto;
-       margin-right: auto;
+    margin-right: auto;
           
     -webkit-border-radius:10px;
 }
@@ -240,7 +265,7 @@ label {
     margin-left: auto;
    margin-right: auto;
    
-   width: 21cm;
+   width: 26cm;
 }
 /* Style du bouton */
 .dropbtn {

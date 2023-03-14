@@ -43,7 +43,7 @@ global $pdo;
       if(isset($_GET['q']) AND !empty($_GET['q'])) {
         $q = htmlspecialchars($_GET['q']);
         $recherche = $pdo->query('SELECT * FROM country WHERE Name LIKE "'.$q.'%" ORDER BY id DESC');
-        print_r($recherche);
+        //print_r($recherche);
       }
 ?>
 <form class="BDR" method="GET">    

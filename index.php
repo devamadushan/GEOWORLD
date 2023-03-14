@@ -24,15 +24,15 @@
 //session_start (); 
 
 if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
-  echo "<p style=text-align:right;>Bienvenue : ".$_SESSION['login']."(".$_SESSION['role'].")";
+  echo "<p style=text-align:right;>Vous êtes : ".$_SESSION['login']."(".$_SESSION['role'].")";
   }
 ?>
 <div class="wrapper">
-  <div class="content">
-    <h1>Bienvenue sur notre site</h1>
+  <div class="content" style="background-color: #D0E3FA,;">
+    <h1>꧁•⊹٭𝙱𝚒𝚎𝚗𝚟𝚎𝚗𝚞𝚎 𝚜𝚞𝚛 𝚗𝚘𝚝𝚛𝚎 𝚜𝚒𝚝𝚎٭⊹•꧂</h1>
     <p></p>
-    <img class="image" src="images/LOGO.JPG" alt="Votre image" />
-    <p>Je suis à votre disposition pour répondre à tous vos besoins en matière de développement web.</p>
+    <img class="image" src="images/LOGO-home.png" alt="Votre image" />
+    
   </div>
 </div>
 

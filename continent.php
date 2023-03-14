@@ -21,7 +21,7 @@
 $defUtilisateur = 'inconnu';
 if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
   $defUtilisateur = $_SESSION['role'];
-    echo "<p style=text-align:right;>Bienvenue : ".$_SESSION['login']."(".$_SESSION['role'].")";
+    echo "<p style=text-align:right;> Vous êtes : ".$_SESSION['login']."(".$_SESSION['role'].")";
     //echo '<br><a href="logoutGeoworld.php">Deconnexion</a></p>';
 }?>
 <?php

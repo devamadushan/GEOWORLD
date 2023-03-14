@@ -17,14 +17,14 @@
 
 <footer class="footer mt-auto py-3">
   <div class="container">
-    <span class="text-muted">&copy;Team All is well</span>   
+    <span class="text-muted">&copy;Team A D S</span>   
   </div>
   <div class="container">
   <span class="text-muted"><a href="contact.php">&copy;Contact</span></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <span class="text-muted"><a href="mentions.php">&copy;Mentions légales</span></a>
 </div>
-<div class="container">
-  <span class="text-muted"><a href="mentions.php">Mentions légales</span></a>
-</div>
+
 </footer>
 
   </body>

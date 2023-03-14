@@ -45,6 +45,27 @@ if($test=='enseignant' || $test=='admin' ):
     <option value="Option 2.15">Capital</option>
     <option value="Option 2.16">Code2</option>
 	</select>
+
+  <label for="Options"></label>
+	<select id="selectOption5" name="tables" class="option" >
+  <option value=""></option>
+  <option value="Option 5.1">,id</option>
+  <option value="Option 5.16">,Code</option>
+		<option value="Option 5.2">,Name</option>
+		<option value="Option 5.3">,Continent</option>
+		<option value="Option 5.5">,Region</option>
+    <option value="Option 5.6">,SurfaceArea</option>
+    <option value="Option 5.7">,IndepYear</option>
+		<option value="Option 5.8">,Population</option>
+    <option value="Option 5.9">,LifeExpectancy</option>
+    <option value="Option 5.10">,GNP</option>
+		<option value="Option 5.11">,GNPOLD</option>
+    <option value="Option 5.12">,LocalName</option>
+    <option value="Option 5.13">,GovernmentForm</option>
+		<option value="Option 5.14">,HeadOFState</option>
+    <option value="Option 5.15">,Capital</option>
+    <option value="Option 5.16">,Code2</option>
+	</select>
   <label for="Options"></label>
 	<select id="selectOption3" name="tables" class="option ">
   <option value="Option 3.1">From country</option>
@@ -53,7 +74,22 @@ if($test=='enseignant' || $test=='admin' ):
   <select id="selectOption4" name="tables" class="option ">
   <label for="Options"></label>
   <option value="Option 4.1">;</option>
-  <option value="Option 4.2">where id =</option>
+  <option value="Option 4.2">where id = </option>
+  <option value="Option 2.16">where Code = " "</option>
+		<option value="Option 2.2">where Name = " "</option>
+		<option value="Option 2.3">where Continent = " "</option>
+		<option value="Option 2.5">where Region = " "</option>
+    <option value="Option 2.6">where SurfaceArea =</option>
+    <option value="Option 2.7">where IndepYear =</option>
+		<option value="Option 2.8">where Population =</option>
+    <option value="Option 2.9">where LifeExpectancy =</option>
+    <option value="Option 2.10">where GNP =</option>
+		<option value="Option 2.11">where GNPOLD = </option>
+    <option value="Option 2.12">where LocalName = " "</option>
+    <option value="Option 2.13">where GovernmentForm = " "</option>
+		<option value="Option 2.14">where HeadOFState = " "</option>
+    <option value="Option 2.15">where Capital =</option>
+    <option value="Option 2.16">where Code2 = " "</option>
   </select>
 </div>
     <form class="RE" method="GET">    
@@ -64,6 +100,7 @@ if($test=='enseignant' || $test=='admin' ):
 		// récupérer les références des éléments select et de l'élément input
 		var select1 = document.getElementById("selectOption1");
 		var select2 = document.getElementById("selectOption2");
+    var select5  = document.getElementById("selectOption5");
 		var select3 = document.getElementById("selectOption3");
     var select4 = document.getElementById("selectOption4");
 		var inputField = document.getElementById("inputField");
@@ -71,16 +108,19 @@ if($test=='enseignant' || $test=='admin' ):
 		// ajouter un écouteur d'événement pour détecter le changement de sélection pour chacune des listes déroulantes
 		select1.addEventListener("change", updateInputField);
 		select2.addEventListener("change", updateInputField);
+    select5.addEventListener("change", updateInputField);
 		select3.addEventListener("change", updateInputField);
     select4.addEventListener("change", updateInputField);
+    
 
-		// fonction pour mettre à jour le champ de saisie input avec les valeurs sélectionnées dans les trois listes déroulantes
+		// fonction pour mettre à jour le champ de saisie avec les valeurs sélectionnées dans les trois listes déroulantes
 		function updateInputField() {
 			var option1 = select1.options[select1.selectedIndex].text;
 			var option2 = select2.options[select2.selectedIndex].text;
+      var option5 = select5.options[select5.selectedIndex].text;
 			var option3 = select3.options[select3.selectedIndex].text;
       var option4 = select4.options[select4.selectedIndex].text;
-			inputField.value = option1 + " " +option2+ " " +option3+ " " +option4 ;
+			inputField.value = option1 + " " +option2+ " " +option5+ " " +option3+ " " +option4 ;
 		}
 	</script>
     
@@ -89,7 +129,7 @@ if($test=='enseignant' || $test=='admin' ):
       global $pdo;
             //$recherche = $pdo->query('SELECT * FROM country');
             if(isset($_GET['q']) AND !empty($_GET['q'])) {
-              $q = htmlspecialchars($_GET['q']);
+              $q = ($_GET['q']);
               $recherche = $pdo->query($q);
               //print_r($recherche);
               echo $q;
@@ -193,8 +233,7 @@ $save= saverequete($requete);
   $lesrequetes =getsql(); 
   //print_r($lesrequetes);?>
 <?php foreach ($lesrequetes as $sql): ?>
-    <a class="option24" href="?q=<?php echo $sql->Requete ?>"><?php echo $sql->Requete ?></a>
-   
+    <a class="option24" href="?q=<?php echo $sql->Requete ?>"><?php echo $sql->Requete ?></a>   
 <?php endforeach ;?>
 <br>
 <?php 
