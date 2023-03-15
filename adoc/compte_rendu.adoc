@@ -71,7 +71,7 @@ INSERT INTO `requetes` (`id`, `Requete`) VALUES
 ----
 
 
-IMPORTANT: Lien GitLab :
+IMPORTANT: Lien GitLab : https://gitlab.com/devamadushan/GEOWORLD.git
 
 <<<
 
