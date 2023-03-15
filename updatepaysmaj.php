@@ -1,4 +1,18 @@
 <?php 
+
+/**
+ * Home Page
+ *
+ * PHP version 7
+ *
+ * @category  Page
+ * @package   Application
+ * @author    SIO-SLAM <sio@ldv-melun.org>
+ * @copyright 2019-2021 SIO-SLAM
+ * @license   http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @link      https://github.com/sio-melun/geoworld
+ */
+
 require_once 'header.php'; 
 require_once 'javascripts.php';
 //require_once 'inc/connect-db.php';
@@ -6,12 +20,11 @@ require_once 'inc/manager-db.php';
 //require_once 'updatepays.php';
 
 //on récupère et on vérifie les données reçues par le formulaire
-if ( isset($_GET['id']) && !empty($_GET['id'])){
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+} else {
     $id = $_GET['id'] ;
-    }
-    else {
-    $id = $_GET['id'] ;
-    }
+}
     echo $id;
     // à faire sur chaque donnée reçue
     $code = $_GET['code'];
@@ -49,7 +62,8 @@ if ( isset($_GET['id']) && !empty($_GET['id'])){
     Capital=:capital,
     Code2=:code2
     where id=:id";
-    try {
+    
+try {
     //on prépare la requête avec les données reçues
     $statement = $pdo->prepare($sql);
     $statement->bindParam(':code', $code, PDO::PARAM_STR);
@@ -69,10 +83,11 @@ if ( isset($_GET['id']) && !empty($_GET['id'])){
     $statement->bindParam(':code2', $code2, PDO::PARAM_STR);
     $statement->bindParam(':id', $id, PDO::PARAM_STR);
     $statement->execute();
+
     //On renvoie vers la liste des salaries
      header("Location:continent.php");
-    }
-    catch(PDOException $e){
+}
+catch(PDOException $e){
      echo 'Erreur : '.$e->getMessage();
-    }
+}
 ?>
