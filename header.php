@@ -27,8 +27,7 @@
       $continents = getNomContinents();
       session_start();
       $test = "pooda";
-    if(isset($_SESSION['role']))
-    {
+    if (isset($_SESSION['role'])) {
         $test= $_SESSION['role'];
     }
     ?>
@@ -97,7 +96,7 @@
           <a class="nav-link " href="utilisateurs.php">Utilisateurs</a>
         </li>
         <?php endif ?> 
-        <?php if(isset($_SESSION['role'])!='admin'||isset ($_SESSION['role'])!='enseignant'||isset ($_SESSION['role'])!='eleve') :?>
+        <?php if (isset($_SESSION['role'])!='admin'||isset($_SESSION['role'])!='enseignant'||isset($_SESSION['role'])!='eleve') :?>
         <li class="nav-item">
           <a class="nav-link " href="Authentif.php">
             Connexion
@@ -112,7 +111,7 @@
         </li>
         <?php endif ?>  
 
-        <?php if(isset($_SESSION['role'])!='admin'||isset ($_SESSION['role'])!='enseignant'||isset ($_SESSION['role'])!='eleve') :?>
+        <?php if (isset($_SESSION['role'])!='admin'||isset($_SESSION['role'])!='enseignant'||isset($_SESSION['role'])!='eleve') :?>
         <li class="nav-item">
           <a class="nav-link " href="inscrip.php">
             Inscription

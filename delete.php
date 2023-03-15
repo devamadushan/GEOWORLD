@@ -25,7 +25,6 @@
 
 /**
  *  Fonction qui permet de supprimer un utilisateur
- * 
  */
 require_once 'header.php'; 
 require_once 'inc/manager-db.php';;

@@ -40,16 +40,15 @@ require_once 'inc/manager-db.php';
       
 global $pdo;
       $recherche = $pdo->query('SELECT * FROM country');
-      if(isset($_GET['q']) AND !empty($_GET['q'])) {
+if (isset($_GET['q']) AND !empty($_GET['q'])) {
         $q = htmlspecialchars($_GET['q']);
         $recherche = $pdo->query('SELECT * FROM country WHERE Name LIKE "'.$q.'%" ORDER BY id DESC');
-        //print_r($recherche);
-      }
+}
 ?>
 <form class="BDR" method="GET">    
         <input class="RECHERCHE" type="search" name="q" placeholder=" 🔍 Recherche par pays..." />
         <input class="VALIDER" type="submit" value="valider" />
-	  </form>
+</form>
       
 <table class="ta">
          <tr>
@@ -64,7 +63,7 @@ global $pdo;
            </tr>
       <?php foreach($recherche as $b): ?>
             <tr>
-        	<td><?php echo $b->Name ?></td>
+<td><?php echo $b->Name ?></td>
             <td><?php echo $b->Continent ?></td>
             <td><?php echo $b->Region?></td>
             <td><?php echo $b->Population ?></td>
@@ -73,14 +72,14 @@ global $pdo;
             <td><?php echo $b->GovernmentForm ?></td>
             <td><?php echo $b->HeadOfState ?></td>
       </tr>
-        <?php endforeach ?>
+      <?php endforeach ?>
         </table>
       
 
 <?php  
       require_once 'javascripts.php';
       require_once 'footer.php';
-      ?>
+?>
 </html>
      
 </body>

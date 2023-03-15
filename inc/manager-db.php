@@ -101,8 +101,15 @@ function getCapital($name)
     $prep->execute();
     return $prep->fetchALL();
 }
-
-function getLangueById($resultatPays){
+/**
+ * Obtenir la liste de tous les continents
+ *
+ * @param string $resultatPays retourne les pays
+ * 
+ * @return array d'objets (des continents)
+ */
+function getLangueById($resultatPays)
+{
     global $pdo;
     $query = 'SELECT language.Name FROM  language, countrylanguage, country WHERE country.id=countrylanguage.idCountry AND countrylanguage.idLanguage=language.id AND country.Name=:pays;';
     $prep = $pdo->prepare($query);
@@ -113,14 +120,14 @@ function getLangueById($resultatPays){
 
 /** 
  * Retourne le login et le password
- *
- * @param string $login 
  * 
- * @param string $pwd
+ * @param string $login indique le login
+ * @param string $pwd   indique le mot de passe
  * 
  * @return array tableau d'utilisateur
  */
-function getAuthentification($login,$pwd){
+function getAuthentification($login,$pwd)
+{
     global $pdo;
     $query = 'SELECT * FROM utilisateur WHERE login= :login and password= :pwd';
     $prep = $pdo->prepare($query);
@@ -128,11 +135,10 @@ function getAuthentification($login,$pwd){
     $prep->bindValue(':pwd', $pwd);
     $prep->execute();
     // on vérifie que la requête ne retourne qu'une seule ligne
-    if($prep->rowCount() == 1) {
+    if ($prep->rowCount() == 1) {
         $result = $prep->fetch();
         return $result;
-    }
-    else
+    } else
     return false;
   
 }
@@ -152,6 +158,13 @@ function listutilisateur()
          die("erreur dans la requete ".$e->getMessage());
     }
 }
+/**
+ * Obtenir la liste de tous les pays référencés d'un continent donné
+ *
+ * @param string $id id utilisateurs
+ * 
+ * @return array tableau d'objets (des pays)
+ */
 function getutilisateur($id)
 {
     global $pdo;
@@ -164,49 +177,65 @@ function getutilisateur($id)
         return $result;
     }
     catch ( Exception $e ) {
-        die ("erreur dans la requete ".$e->getMessage());
+        die("erreur dans la requete ".$e->getMessage());
     }
 }
-
-function updategeoworld($id){
+/**
+ * Obtenir la liste de tous les pays référencés d'un continent donné
+ *
+ * @param string $id id utilisateurs
+ * 
+ * @return array tableau d'objets (des pays)
+ */
+function updategeoworld($id)
+{
     global $pdo;
     $requete = "SELECT * FROM country where id = :id";
     try{
-    $prep = $pdo->prepare($requete);
-    $prep->bindParam(':id', $id, PDO::PARAM_INT);
-    $prep->execute();
-    $result = $prep->fetch();
-    return $result;
+        $prep = $pdo->prepare($requete);
+        $prep->bindParam(':id', $id, PDO::PARAM_INT);
+        $prep->execute();
+        $result = $prep->fetch();
+        return $result;
     }
     catch ( Exception $e ) {
-    die ("erreur dans la requete ".$e->getMessage());
+        die("erreur dans la requete ".$e->getMessage());
     }
-   }
+}
 
 
 /**
  * TEST FONCTION
+ * 
+ * @param string $requete requete utilisateurs
+ * 
+ * @return array tableau utilisateurs
  */
-
- function saverequete($requete){
+function saverequete($requete)
+{
     global $pdo;
     $sql = " INSERT into requetes (Requete)
     values (:requete)";
-try {
-    //on prépare la requête avec les données reçues
-    $statement = $pdo->prepare($sql);
-    $statement->bindParam(':requete', $requete, PDO::PARAM_STR);
-    $statement->execute();
-    //On renvoie vers la page Geoworld
-}
+    try {
+        //on prépare la requête avec les données reçues
+            $statement = $pdo->prepare($sql);
+            $statement->bindParam(':requete', $requete, PDO::PARAM_STR);
+            $statement->execute();
+        //On renvoie vers la page Geoworld
+    }
 
-catch(PDOException $e){
-    echo 'Erreur : '.$e->getMessage();
-}
+    catch(PDOException $e){
+        echo 'Erreur : '.$e->getMessage();
+    }
    
- }
-
- function getsql(){
+}
+/**
+ * Obtenir la liste de tous les pays référencés d'un continent donné
+ *
+ * @return array requete sql
+ */
+function getsql()
+{
     global $pdo;
     $query = 'SELECT DISTINCT Requete FROM requetes';
     try{
@@ -215,5 +244,5 @@ catch(PDOException $e){
     } catch( Exception $e) {
          die("erreur dans la requete ".$e->getMessage());
     }
- }
+}
 ?>

@@ -1,12 +1,29 @@
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="style.css" />
-	<title>Update utilisateur</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css" />
+<title>Update utilisateur</title>
 </head>
 <body>
 <?php
+/**
+ * Ce script est composé de fonctions d'exploitation des données
+ * détenues pas le SGBDR MySQL utilisées par la logique de l'application.
+ *
+ * C'est le seul endroit dans l'application où a lieu la communication entre
+ * la logique métier de l'application et les données en base de données, que
+ * ce soit en lecture ou en écriture.
+ *
+ * PHP version 7
+ *
+ * @category  Database_Access_Function
+ * @package   Application
+ * @author    SIO-SLAM <sio@ldv-melun.org>
+ * @copyright 2019-2023 SIO-SLAM
+ * @license   http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @link      https://github.com/sio-melun/geoworld
+ */
 require_once 'header.php'; 
 require_once 'inc/manager-db.php';
 $id = $_GET['id'];

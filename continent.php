@@ -20,7 +20,7 @@
 //session_start ();
 $defUtilisateur = 'inconnu';
 if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
-  $defUtilisateur = $_SESSION['role'];
+    $defUtilisateur = $_SESSION['role'];
     echo "<p style=text-align:right;> Vous êtes : ".$_SESSION['login']."(".$_SESSION['role'].")";
     //echo '<br><a href="logoutGeoworld.php">Deconnexion</a></p>';
 }?>
@@ -56,7 +56,7 @@ $desPays = getCountriesByContinent($continent);
            <th>Pays</th>
            <th>Population</th>
            <th>Capital</th>
-            <?php if ($defUtilisateur =='enseignant' ||$defUtilisateur =='admin'):?> 
+            <?php if ($defUtilisateur =='enseignant' ||$defUtilisateur =='admin') :?> 
             <th>Modifier</th> 
             <?php endif; ?>
             <th>Langues parlées</th>
@@ -84,23 +84,22 @@ $desPays = getCountriesByContinent($continent);
                 
        <td> <?php echo $cap->Name ?> </td>
               
-       <?php if($defUtilisateur =='enseignant' || $defUtilisateur =='admin'): ?>
-       <td><a href="updatepays.php?id=<?php echo $pays->id ?>" 
-        onClick="return(confirm('Etes-vous sûr de vouloir modifier <?php echo $pays->Name ?> ?'));">update</a></td> <?php endif; ?>
+                    <?php if($defUtilisateur =='enseignant' || $defUtilisateur =='admin') : ?>
+       <td><a href="updatepays.php?id=<?php echo $pays->id ?>"onClick="return(confirm('Etes-vous sûr de vouloir modifier <?php echo $pays->Name ?> ?'));">update</a></td> 
+                    <?php endif; ?>
                 <?php endforeach; ?>
        
-      <?php 
-      $resultatPays = $pays->Name;
-      $langues = getLangueById($resultatPays);
-      //print_r($langues); 
-      ?>
+            <?php 
+            $resultatPays = $pays->Name;
+            $langues = getLangueById($resultatPays);
+            ?>
 
 
 
       <td >
-      <?php foreach ($langues as $langueDonnee):?>
+            <?php foreach ($langues as $langueDonnee):?>
       <a> <?php echo $langueDonnee->Name ; ?> </a>
-      <?php endforeach; ?>
+            <?php endforeach; ?>
       </td>
       </tr>
       
