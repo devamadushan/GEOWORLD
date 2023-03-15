@@ -26,7 +26,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'] ;
 }
     echo $id;
-    // à faire sur chaque donnée reçue
+    // à faire sur chaque données reçues
     $code = $_GET['code'];
     $pays = $_GET['pays'];
     $continent = $_GET['continent'];
@@ -84,7 +84,7 @@ try {
     $statement->bindParam(':id', $id, PDO::PARAM_STR);
     $statement->execute();
 
-    //On renvoie vers la liste des salaries
+    //On renvoie vers la liste des continents
      header("Location:continent.php");
 }
 catch(PDOException $e){

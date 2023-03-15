@@ -205,7 +205,7 @@ function updategeoworld($id)
 
 
 /**
- * TEST FONCTION
+ * Insert les requetes
  * 
  * @param string $requete requete utilisateurs
  * 
