@@ -1,0 +1,257 @@
+= Compte rendu : _Projet Geoworld_
+:toc-title: Tables des matières
+:toc: top
+
+Projet réalisé par : +
+*SONG* Steeven +
+*TANDABANY* Adrien +
+*THEVARANCHAN* Devamadushan +
+
+
+
+<<<
+
+== *Introduction :* +
+----
+Nous avons établi une répartition des tâches pour réaliser au mieux le projet Geoworld. Les tâches ont été attribuées de manière logique afin que chacun puisse travailler individuellement sur les missions imposées. +
+----
+
+IMPORTANT: Avant de lancer le projet, veuillez importer le script ci-dessous pour le bon fonctionnement du projet
+
+Script :
+----
+CREATE TABLE `utilisateur` (
+  `id` int NOT NULL,
+  `nom` varchar(100) NOT NULL DEFAULT '',
+  `prenom` varchar(50) NOT NULL DEFAULT '',
+  `date_naissance` date NOT NULL,
+  `login` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `date_naissance`, `login`, `password`, `role`) VALUES
+(1, 'Tandabany', 'Adrien', '1999-05-15', 'Adrien', '123456', 'admin'),
+(2, 'Toto', 'Deva', '1999-12-22', 'Deva', '1234', 'enseignant'),
+(3, 'Song', 'Steeven', '1999-09-09', 'Steeven', '12345', 'eleve'),
+(4, 'keisharger', 'logan', '1999-06-15', 'KK', '123456', 'eleve'),
+(5, 'keisharger', 'logan', '1999-06-15', 'lolo', '123456', 'eleve'),
+(6, 'shrof', 'josselin', '1998-06-15', 'jojo', '123456', 'enseignant'),
+(7, 'tony', 'stark', '1973-06-15', 'tony', '123456', 'visiteur'),
+(9, 'test', 'test', '2023-04-08', 'test', '1234', 'visiteur');
+
+
+
+
+CREATE TABLE `requetes` (
+  `id` int NOT NULL,
+  `Requete` varchar(100) NOT NULL DEFAULT ''
+);
+
+INSERT INTO `requetes` (`id`, `Requete`) VALUES
+(1, 'SELECT * From country ;'),
+(5, 'SELECT Code From country ;'),
+(6, 'SELECT Region From country ;'),
+(10, 'SELECT * From country ;'),
+(20, 'SELECT Code From country ;'),
+(29, 'SELECT Name,Capital From country ;'),
+(30, 'SELECT * From country where id =1'),
+(43, 'SELECT *  From country where id = \"2 \"'),
+(47, 'SELECT Region ,Population From country ;'),
+(48, 'SELECT *  From country ;'),
+(51, 'SELECT id  From country ;'),
+(54, 'SELECT Name  From country where id =1'),
+(56, 'SELECT Name  From country ;'),
+(57, 'SELECT Continent ,id From country where id =1'),
+(58, 'SELECT *  From country ;');
+----
+
+
+IMPORTANT: Lien GitLab : https://gitlab.com/devamadushan/GEOWORLD.git
+
+<<<
+
+== *I. Partie Steeven* +
+
+=== *a) Création d’une base de données* +
+
+Nous avons créé une table dans la base de données geowrold qui nous a permit d’attribuer les rôles utilisateurs, les logins, les mots de passe, la date de naissance, le nom/prénom et l’id.
+
+image::creation_table_utilisateurs.png[]
+
+=== *b) Formulaire inscription* +
+
+Dans un premier temps, nous vérifions si les variables sont définies et remplies avec le code suivant : 
+[source,php]
+----
+if (isset($_POST['login']) && isset($_POST['pwd']) && !empty($_POST['login'])&& !
+empty($_POST['login'])) {
+----
+
+Puis nous appelons la fonction « getAuthentification » depuis la page manager-db en indiquant en paramètre le login et le mot de passe.
+[source,php]
+----
+$result = getAuthentification($_POST['login'],$_POST['pwd']);
+----
+On donne une condition qui indique que si le login et le password est reconnu, le visiteur est redirigé vers la page d’accueil avec comme paramètre le login et le rôle. +
+
+Ensuite, nous créons un formulaire d’inscription. +
+
+image::formulaire_inscription.png[]
+
+Ce formulaire redirige vers la page « GeoworldTraitement.php ». Dans cette même page les données sont récupérer et renvoyé dans la base de données via la méthode PDO. Ainsi, l’utilisateur est redirigé vers une page qui l’informe qu’il est inscrit. (page : InscripSucces.php) +
+
+NOTE: Difficulté rencontrée : Nous avons eu des difficultés de compréhension sur la préparation des requêtes. De nombreuses erreurs ont été émises...
+
+<<<
+
+== *II. Partie Devamadushan*
+
+=== *a)Gestion des rôles utilisateurs* +
+
+Pour gérer les visiteurs, nous attribuons un droit d’accès à l’administrateur.
+[source,php]
+----
+if ($_SESSION['role']=='admin'):
+----
+Ensuite, l’administrateur peut consulter la liste des utilisateurs qui ont un rôle d’admin, d’élève et d’enseignant comme indiqué ci dessous. +
+
+image::liste_utilisateurs.png[]
+
+Ainsi que supprimer l’utilisateur (renvoie sur la page delete.php) ou valider leur accès et leur attribuer un rôle (renvoie sur update.php)
+
+image::liste_visiteurs.png[]
+
+=== *b)La requête SQL* +
+
+Les enseignants et les administrateurs pourront consulter, créer, modifier, supprimer. Les élèves ne pourront que saisir des requêtes. +
+
+On initialise chaque opération SQL (SELECT, INSERT, UPDATE, DELETE) à partir de la table country de la base de données. +
+
+image::liste_deroulante_sql.png[]
+
+On crée un formulaire pour entrer les informations sélectionnées. +
+
+image::input_formulaire.png[]
+
+Puis nous traitons les informations avec un programme JavaScript qui consiste à rentrer les éléments choisis dans le formulaire d’entrée. +
+En parallèle, nous créons une fonction qui permet de mettre à jour le champ saisi avec les valeurs sélectionnées dans les trois premières listes déroulantes. 
+
+image::selectionne_remplace_sql.png[]
+
+<<<
+
+On vérifie si la variable $_GET['q'] est définie et non vide.
+
+image::execute_sql.png[]
+
+
+On vérifie les données saisie avec la fonction "strpos"
+
+image::verification_donnees_sql.png[]
+
+Puis, on affiche les réponses de la requête SQL du pays souhaité.
+
+image::affiche_donnees_sql.png[]
+
+NOTE: Difficulté rencontrée : Nous avons eu des difficultés de compréhension sur l'usage de la fonction "strpos" et provoquait une confusion sur l'affichage du tableau. De plus, nous n'avons pas compris pourquoi les (' ') et les (" ") dans la requête SQL n'étaient pas reconnus à cause de la fonction "htmlspecialchars".
+
+<<<
+
+== *III. Partie Adrien* +
+
+=== *a) Mise à jour des données manuellement pour l’enseignant et l’administrateur* +
+
+Après avoir attribué les droits pour chaque cession des utilisateurs, nous pouvons exploiter la mise à jour des données des pays pour l’administrateur et l’enseignant. +
+
+Avant toute chose, nous créons une fonction « updategeoworld » dans la page « manager-db » pour créer une requête et récupérer l’id de la table country.
+
+image::fonction_updategeoworld.png[]
+
+Puis nous créons un lien « Update » sur la page « continent.php » qui nous renvoie sur une page « updatepays.php » grâce à la balise
+<a href="updatepays.php?id=<?php echo $pays->id ?>"
+afin de modifier les informations d’un pays en récupérant l’id du pays. +
+
+Ensuite, dans la page udpdatepays.php on initialise une variable pour récupérer l’id de la base de données $id = $_GET['id'] ; dans la page «updatepays.php » et on initialise une variable pour appelé la fonction $updatePays = updategeoworld($id);
+
+Sur cette même page, nous créons un formulaire qui va récupérer et vérifier les données reçues de la page « continent.php » et qui enverra ces données sur la page «updatepaysmaj.php ». 
+
+image::verification_donnees.png[]
+
+Les variables récupérées vont être insérées avec la méthode $_GET.
+[source,php]
+----
+$code = $_GET['code'];
+----
+
+Puis on rédige la requête pour mettre à jour les données. +
+[source,php]
+----
+$sql = "update country set Code=:code, Name=:name, Continent=:continent, Region=:region, SurfaceArea=:surfacearea, IndepYear=:indepyear, Population=:population, LifeExpectancy=:lifeexpectancy, GNP=:gnp, GNPOld=:gnpold, LocalName=:localname, GovernmentForm=:governmentform, HeadOfState=:headofstate, Capital=:capital, Code2=:code2 where id=:id";
+----
+
+Enfin, on prépare la requête avec les données reçues.
+
+image::preparation_requete.png[]
+
+Et, on  renvoie vers la liste des continents. +
+[source,php]
+----
+header("Location:continent.php");
+----
+
+=== *b) Exploitation de la barre de recherche* +
+
+Nous avons établi une barre de recherche qui permet de lister les pays et leurs informations avec le nom du pays. +
+Pour ce faire on réalise la requête SQL qui permet de récupérer les données de la table country dans la base de données et qui les affichera. 
+
+[source,php]
+$recherche = $pdo->query('SELECT * FROM country');
+
+Puis nous réalisons une seconde requête qui affichera les pays qui comporteront le paramètre « q » entré par l’utilisateur. (Exemple : « J » = Japan, Jordan, Jamaica)
+
+[source,php]
+----
+if(isset($_GET['q']) AND !empty($_GET['q'])) {
+    $q = htmlspecialchars($_GET['q']);
+    $recherche = $pdo->query('SELECT * FROM country WHERE Name LIKE "'.$q.'%" ORDER BY id DESC');
+    }
+----
+
+Puis nous affichons les données que nous souhaitons faire apparaître lorsque l’utilisateur recherche un pays dans une ligne de tableau avec une boucle foreach. +
+
+image::donnees_parcourues.png[]
+
+NOTE: Difficulté rencontrée : Nous avons rencontré des difficulté sur l'envoie et la réception des données pour modifier les informations des pays. Les liens crées entre les différentes pages à été difficile à cerner.
+
+<<<
+
+== *IV. Missions complémentaires* +
+
+=== *a) Email* +
+
+Nous avons créé un formulaire pour notre page contact qui est relié à une adresse Gmail et lié a Laragon afin de permettre à l'utilisateur d'envoyer son message et de permettre à l'admin de recevoir le message via l'email.
+
+image::laragon_gmail.png[]
+
+=== *b) Cookies* +
+
+Nous avons pris un script d'un cookie sur internet afin d'avoir notre barre de cookie.
+
+=== *c) Mentions légales* +
+
+Enfin nous avons introduit une page de mentions légale qui elle meme relié à la barre de cookie afin d'avoir des informations sur Geoworld et les regles RGPD.
+
+=== *d) Geomap* +
+
+Nous avons inséré un lien afin de visualiser une carte du monde. +
+
+<<<
+
+== *V. Conclusion* +
+
+Le projet nous a soumis à différentes difficultés comme la répartion des tâches, la difficulté à comprendre les fonctions, à résoudre et débugué des erreurs. De plus, nous avons eu des difficultés sur l'utilisation du logiciel Git/Github pour continuer sur l'avancé du projet.
