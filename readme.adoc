@@ -272,7 +272,7 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
 
 Puis nous affichons les données que nous souhaitons faire apparaître lorsque l’utilisateur recherche un pays dans une ligne de tableau avec une boucle foreach. +
 
-image::donnees_parcourues.PNG[align=center]
+image::donnees_parcourues.png[align=center]
 
 *Point de vue extérieur.*
 
