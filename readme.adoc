@@ -109,7 +109,7 @@ On donne une condition qui indique que si le login et le password est reconnu, l
 
 Ensuite, nous créons un formulaire d’inscription. +
 
-image::adoc/formulaire_inscription.png[]
+image::adoc/formulaire_inscription.PNG[]
 
 Ce formulaire redirige vers la page « GeoworldTraitement.php ». Dans cette même page les données sont récupérer et renvoyé dans la base de données via la méthode PDO. Ainsi, l’utilisateur est redirigé vers une page qui l’informe qu’il est inscrit. (page : InscripSucces.php) +
 
@@ -152,7 +152,7 @@ Les enseignants et les administrateurs pourront consulter, créer, modifier, sup
 
 On initialise chaque opération SQL (SELECT, INSERT, UPDATE, DELETE) à partir de la table country de la base de données. +
 
-image::adoc/liste_deroulante_sql.png[align=center]
+image::adoc/liste_deroulante_sql.PNG[align=center]
 
 *Point de vue extérieur.*
 
@@ -160,18 +160,18 @@ image::adoc/requetesql.png[]
 
 On crée un formulaire pour entrer les informations sélectionnées. +
 
-image::adoc/input_formulaire.png[]
+image::adoc/input_formulaire.PNG[]
 
 Puis nous traitons les informations avec un programme JavaScript qui consiste à rentrer les éléments choisis dans le formulaire d’entrée. +
 En parallèle, nous créons une fonction qui permet de mettre à jour le champ saisi avec les valeurs sélectionnées dans les trois premières listes déroulantes. 
 
-image::adoc/selectionne_remplace_sql.png[]
+image::adoc/selectionne_remplace_sql.PNG[]
 
 <<<
 
 On vérifie si la variable $_GET['q'] est définie et non vide.
 
-image::adoc/execute_sql.png[align=center]
+image::adoc/execute_sql.PNG[align=center]
 
 On vérifie les données saisie avec la fonction "strpos"
 
@@ -179,11 +179,11 @@ On vérifie les données saisie avec la fonction "strpos"
 
 image::adoc/requeteexe.png[]
 
-image::adoc/verification_donnees_sql.png[]
+image::adoc/verification_donnees_sql.PNG[]
 
 Puis, on affiche les réponses de la requête SQL du pays souhaité.
 
-image::adoc/affiche_donnees_sql.png[]
+image::adoc/affiche_donnees_sql.PNG[]
 
 *Point de vue extérieur.*
 
@@ -201,7 +201,7 @@ Après avoir attribué les droits pour chaque cession des utilisateurs, nous pou
 
 Avant toute chose, nous créons une fonction « updategeoworld » dans la page « manager-db » pour créer une requête et récupérer l’id de la table country.
 
-image::adoc/fonction_updategeoworld.png[]
+image::adoc/fonction_updategeoworld.PNG[]
 
 Puis nous créons un lien « Update » sur la page « continent.php » qui nous renvoie sur une page « updatepays.php » grâce à la balise
 <a href="updatepays.php?id=<?php echo $pays->id ?>"
@@ -215,7 +215,7 @@ Ensuite, dans la page udpdatepays.php on initialise une variable pour récupére
 
 Sur cette même page, nous créons un formulaire qui va récupérer et vérifier les données reçues de la page « continent.php » et qui enverra ces données sur la page «updatepaysmaj.php ». 
 
-image::adoc/verification_donnees.png[align=center]
+image::adoc/verification_donnees.PNG[align=center]
 
 Les variables récupérées vont être insérées avec la méthode $_GET.
 [source,php]
@@ -235,7 +235,7 @@ image::adoc/updatepays.png[align=center]
 
 Enfin, on prépare la requête avec les données reçues.
 
-image::adoc/preparation_requete.png[]
+image::adoc/preparation_requete.PNG[]
 
 Et, on  renvoie vers la liste des continents. +
 [source,php]
@@ -272,7 +272,7 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
 
 Puis nous affichons les données que nous souhaitons faire apparaître lorsque l’utilisateur recherche un pays dans une ligne de tableau avec une boucle foreach. +
 
-image::donnees_parcourues.png[align=center]
+image::donnees_parcourues.PNG[align=center]
 
 *Point de vue extérieur.*
 
