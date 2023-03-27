@@ -87,7 +87,7 @@ IMPORTANT: Lien GitLab : https://gitlab.com/devamadushan/GEOWORLD.git
 
 Nous avons créé une table dans la base de données geowrold qui nous a permit d’attribuer les rôles utilisateurs, les logins, les mots de passe, la date de naissance, le nom/prénom et l’id.
 
-image::tableutilisateur.PNG[]
+image::adoc/tableutilisateur.PNG[]
 
 === *b) Formulaire connexion et inscription* +
 
