@@ -136,15 +136,15 @@ image::adoc/admin.png[align=center]
 
 Ensuite, l’administrateur peut consulter la liste des utilisateurs qui ont un rôle d’admin, d’élève et d’enseignant comme indiqué ci dessous. +
 
-image::adoc/liste_utilisateurs.png[]
+image::adoc/liste_utilisateurs.PNG[]
 
 Ainsi que supprimer l’utilisateur (renvoie sur la page delete.php) ou valider leur accès et leur attribuer un rôle (renvoie sur update.php)
 
-image::adoc/liste_visiteurs.png[]
+image::adoc/liste_visiteurs.PNG[]
 
 *Point de vue extérieur.*
 
-image::adoc/listeutilisateur.PNG[]
+image::adoc/listeutilisateur.png[]
 
 === *b)La requête SQL* +
 
