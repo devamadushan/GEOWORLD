@@ -13,7 +13,7 @@
  *
  * PHP version 7
  *
- * @category  Page
+ * @category  PagE
  * @package   Application
  * @author    SIO-SLAM <sio@ldv-melun.org>
  * @copyright 2019-2021 SIO-SLAM

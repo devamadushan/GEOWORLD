@@ -7,13 +7,18 @@ Projet réalisé par : +
 *TANDABANY* Adrien +
 *THEVARANCHAN* Devamadushan +
 
+Du 29/01/2023 au 15/03/2023
 
+== *Contexte :* +
+----
+Dans le cadre de notre projet Geoworld, l'objectif était de nous permettre d'apprendre à travailler sur une base de données, en mobilisant nos compétences acquises durant le premier semestre. Et enfin , de developper notre créativité et nous familiariser avec des outils visuels (github, trello, phpcs...).
+----
 
 <<<
 
-== *Introduction :* +
+===  *Introduction :* +
 ----
-Nous avons établi une répartition des tâches pour réaliser au mieux le projet Geoworld. Les tâches ont été attribuées de manière logique afin que chacun puisse travailler individuellement sur les missions imposées. +
+Nous avons établi une répartition des tâches pour réaliser au mieux le projet Geoworld. Les tâches ont été attribuées de manière logique afin que chacun puisse travailler individuellement sur les missions imposées.
 ----
 
 IMPORTANT: Avant de lancer le projet, veuillez importer le script ci-dessous pour le bon fonctionnement du projet
@@ -28,6 +33,7 @@ CREATE TABLE `utilisateur` (
   `login` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `role` varchar(50) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -81,9 +87,9 @@ IMPORTANT: Lien GitLab : https://gitlab.com/devamadushan/GEOWORLD.git
 
 Nous avons créé une table dans la base de données geowrold qui nous a permit d’attribuer les rôles utilisateurs, les logins, les mots de passe, la date de naissance, le nom/prénom et l’id.
 
-image::creation_table_utilisateurs.png[]
+image::tableutilisateur.png[]
 
-=== *b) Formulaire inscription* +
+=== *b) Formulaire connexion et inscription* +
 
 Dans un premier temps, nous vérifions si les variables sont définies et remplies avec le code suivant : 
 [source,php]
@@ -91,7 +97,9 @@ Dans un premier temps, nous vérifions si les variables sont définies et rempli
 if (isset($_POST['login']) && isset($_POST['pwd']) && !empty($_POST['login'])&& !
 empty($_POST['login'])) {
 ----
+*Point de vue extérieur.*
 
+image::connexion.png[align=center]
 Puis nous appelons la fonction « getAuthentification » depuis la page manager-db en indiquant en paramètre le login et le mot de passe.
 [source,php]
 ----
@@ -104,6 +112,10 @@ Ensuite, nous créons un formulaire d’inscription. +
 image::formulaire_inscription.png[]
 
 Ce formulaire redirige vers la page « GeoworldTraitement.php ». Dans cette même page les données sont récupérer et renvoyé dans la base de données via la méthode PDO. Ainsi, l’utilisateur est redirigé vers une page qui l’informe qu’il est inscrit. (page : InscripSucces.php) +
+
+*Point de vue extérieur.*
+
+image::inscription.png[align=center]
 
 NOTE: Difficulté rencontrée : Nous avons eu des difficultés de compréhension sur la préparation des requêtes. De nombreuses erreurs ont été émises...
 
@@ -118,6 +130,10 @@ Pour gérer les visiteurs, nous attribuons un droit d’accès à l’administra
 ----
 if ($_SESSION['role']=='admin'):
 ----
+*Point de vue extérieur.*
+
+image::admin.png[align=center]
+
 Ensuite, l’administrateur peut consulter la liste des utilisateurs qui ont un rôle d’admin, d’élève et d’enseignant comme indiqué ci dessous. +
 
 image::liste_utilisateurs.png[]
@@ -126,13 +142,21 @@ Ainsi que supprimer l’utilisateur (renvoie sur la page delete.php) ou valider 
 
 image::liste_visiteurs.png[]
 
+*Point de vue extérieur.*
+
+image::listeutilisateur.PNG[]
+
 === *b)La requête SQL* +
 
 Les enseignants et les administrateurs pourront consulter, créer, modifier, supprimer. Les élèves ne pourront que saisir des requêtes. +
 
 On initialise chaque opération SQL (SELECT, INSERT, UPDATE, DELETE) à partir de la table country de la base de données. +
 
-image::liste_deroulante_sql.png[]
+image::liste_deroulante_sql.png[align=center]
+
+*Point de vue extérieur.*
+
+image::requetesql.png[]
 
 On crée un formulaire pour entrer les informations sélectionnées. +
 
@@ -147,16 +171,23 @@ image::selectionne_remplace_sql.png[]
 
 On vérifie si la variable $_GET['q'] est définie et non vide.
 
-image::execute_sql.png[]
-
+image::execute_sql.png[align=center]
 
 On vérifie les données saisie avec la fonction "strpos"
+
+*Point de vue extérieur.*
+
+image::requeteexe.png[]
 
 image::verification_donnees_sql.png[]
 
 Puis, on affiche les réponses de la requête SQL du pays souhaité.
 
 image::affiche_donnees_sql.png[]
+
+*Point de vue extérieur.*
+
+image::requeterecu.png[align=center]
 
 NOTE: Difficulté rencontrée : Nous avons eu des difficultés de compréhension sur l'usage de la fonction "strpos" et provoquait une confusion sur l'affichage du tableau. De plus, nous n'avons pas compris pourquoi les (' ') et les (" ") dans la requête SQL n'étaient pas reconnus à cause de la fonction "htmlspecialchars".
 
@@ -176,11 +207,15 @@ Puis nous créons un lien « Update » sur la page « continent.php » qui nous 
 <a href="updatepays.php?id=<?php echo $pays->id ?>"
 afin de modifier les informations d’un pays en récupérant l’id du pays. +
 
+*Point de vue extérieur.*
+
+image::updateconti.png[]
+
 Ensuite, dans la page udpdatepays.php on initialise une variable pour récupérer l’id de la base de données $id = $_GET['id'] ; dans la page «updatepays.php » et on initialise une variable pour appelé la fonction $updatePays = updategeoworld($id);
 
 Sur cette même page, nous créons un formulaire qui va récupérer et vérifier les données reçues de la page « continent.php » et qui enverra ces données sur la page «updatepaysmaj.php ». 
 
-image::verification_donnees.png[]
+image::verification_donnees.png[align=center]
 
 Les variables récupérées vont être insérées avec la méthode $_GET.
 [source,php]
@@ -194,6 +229,10 @@ Puis on rédige la requête pour mettre à jour les données. +
 $sql = "update country set Code=:code, Name=:name, Continent=:continent, Region=:region, SurfaceArea=:surfacearea, IndepYear=:indepyear, Population=:population, LifeExpectancy=:lifeexpectancy, GNP=:gnp, GNPOld=:gnpold, LocalName=:localname, GovernmentForm=:governmentform, HeadOfState=:headofstate, Capital=:capital, Code2=:code2 where id=:id";
 ----
 
+*Point de vue extérieur.*
+
+image::updatepays.png[align=center]
+
 Enfin, on prépare la requête avec les données reçues.
 
 image::preparation_requete.png[]
@@ -204,9 +243,18 @@ Et, on  renvoie vers la liste des continents. +
 header("Location:continent.php");
 ----
 
+*Point de vue extérieur.*
+
+image::updateafgha.png[]
+
 === *b) Exploitation de la barre de recherche* +
 
 Nous avons établi une barre de recherche qui permet de lister les pays et leurs informations avec le nom du pays. +
+
+*Point de vue extérieur.*
+
+image::barre.png[]
+
 Pour ce faire on réalise la requête SQL qui permet de récupérer les données de la table country dans la base de données et qui les affichera. 
 
 [source,php]
@@ -224,7 +272,11 @@ if(isset($_GET['q']) AND !empty($_GET['q'])) {
 
 Puis nous affichons les données que nous souhaitons faire apparaître lorsque l’utilisateur recherche un pays dans une ligne de tableau avec une boucle foreach. +
 
-image::donnees_parcourues.png[]
+image::donnees_parcourues.png[align=center]
+
+*Point de vue extérieur.*
+
+image::paysenj.png[]
 
 NOTE: Difficulté rencontrée : Nous avons rencontré des difficulté sur l'envoie et la réception des données pour modifier les informations des pays. Les liens crées entre les différentes pages à été difficile à cerner.
 
@@ -236,19 +288,19 @@ NOTE: Difficulté rencontrée : Nous avons rencontré des difficulté sur l'envo
 
 Nous avons créé un formulaire pour notre page contact qui est relié à une adresse Gmail et lié a Laragon afin de permettre à l'utilisateur d'envoyer son message et de permettre à l'admin de recevoir le message via l'email.
 
-image::laragon_gmail.png[]
+image::laragon_gmail.png[align=center]
 
-=== *b) Cookies* +
+=== *b) Mentions légales* +
 
-Nous avons pris un script d'un cookie sur internet afin d'avoir notre barre de cookie.
+Nous avons introduit une page de mentions légale.
 
-=== *c) Mentions légales* +
+image::mentionsleg.png[]
 
-Enfin nous avons introduit une page de mentions légale qui elle meme relié à la barre de cookie afin d'avoir des informations sur Geoworld et les regles RGPD.
+=== *c) Geomap* +
 
-=== *d) Geomap* +
+Enfin nous avons inséré un lien afin de visualiser une carte du monde. +
 
-Nous avons inséré un lien afin de visualiser une carte du monde. +
+image::googlemap.png[]
 
 <<<
 
